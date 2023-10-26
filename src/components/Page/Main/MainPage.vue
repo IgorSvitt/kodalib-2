@@ -1,15 +1,19 @@
 <script setup>
 import CarouselNewsMainPage from "@/components/Page/Main/CarouselNewsMainPage.vue";
+import CarouselSeriesMainPage from "@/components/Page/Main/CarouselSeriesMainPage.vue";
 </script>
 
 <template>
-<div class="main-page">
-  <CarouselNewsMainPage />
-</div>
+  <div class="news">
+    <CarouselNewsMainPage/>
+  </div>
+  <div class="series">
+    <CarouselSeriesMainPage/>
+  </div>
 </template>
 
 <style scoped>
-.main-page{
-  margin: 50px 0 ;
+.news {
+  margin: 50px 0;
 }
 </style>

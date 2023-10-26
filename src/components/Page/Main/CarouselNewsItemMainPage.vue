@@ -1,10 +1,55 @@
+<template>
+  <div class="loader-container">
+    <div v-if="loading" class="loader"></div>
+    <div class="image-container" v-else>
+      <img :src="imageSrc" alt="Изображение" class="img-news">
+    </div>
+    <div class="movie-info">
+      <div class="gradient-overlay">
+        <div class="movie-details">
+          <h2 class="title">{{ title }}</h2>
+          <p class="rating-name">Рейтинг: <span :style="{ color: ratingColor}" class="rating-num"> {{ rating }}</span></p>
+          <p class="description">{{ description }}</p>
+          <div class="buttons">
+            <button class="watch" type="button">
+              <img src="@/assets/icons/play.svg" alt="play" class="play">
+              Смотреть
+            </button>
+            <button class="like" type="button">
+              <img src="@/assets/icons/bookmark.svg" alt="play" class="bookmark">
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
 <script>
-import {ref, onMounted} from 'vue';
+import { ref, onMounted, computed } from 'vue';
+
+// Создание пользоватского хука для цветного рейтинга
+function useColorRating(rating) {
+  const ratingColor = computed(() => {
+    if (rating > 7.0) {
+      return '#3bb33b';
+    } else if (rating < 6.0) {
+      return '#cc0000';
+    } else {
+      return '#666666';
+    }
+  });
+
+  return ratingColor;
+}
 
 export default {
   props: {
-    image: {
-      type: String,
+    film: {
+      imageLink: String,
+      title: String,
+      rating: Number,
+      description: String,
       required: true,
     },
   },
@@ -13,8 +58,7 @@ export default {
     const loading = ref(true);
 
     onMounted(() => {
-      // Здесь вы можете выполнить запрос на сервер для загрузки изображения
-      const imageUrl = props.image;
+      const imageUrl = props.film.imageLink;
 
       const img = new Image();
       img.src = imageUrl;
@@ -25,29 +69,24 @@ export default {
       };
     });
 
-    return {imageSrc, loading};
+    // Используйте пользоватский хук для определения цвета рейтинга
+    const ratingColor = useColorRating(props.film.rating);
+
+    return {
+      imageSrc,
+      loading,
+      title: props.film.title,
+      rating: props.film.rating,
+      description: props.film.description,
+      ratingColor,
+    };
   },
 };
 </script>
 
-<template>
-  <div class="loader-container">
-    <div v-if="loading" class="loader"></div>
-    <div class="image-container" v-else>
-      <img :src="imageSrc" alt="Изображение" class="img-news">
-      <div class="buttons">
-        <button class="watch" type="button">
-          <img src="@/assets/icons/play.svg" alt="play" class="play">
-          Смотреть
-        </button>
-        <button class="like" type="button">
-          <img src="@/assets/icons/bookmark.svg" alt="play" class="bookmark">
-        </button>
-      </div>
-
-    </div>
-  </div>
-</template>
+<style>
+/* Ваш стиль CSS */
+</style>
 
 <style>
 .loader-container {
@@ -70,10 +109,8 @@ export default {
 }
 
 .buttons {
-  position: absolute;
-  left: 20px; /* Расположение слева */
-  bottom: 20px; /* Расположение внизу */
   display: flex;
+  margin: 20px 0;
 }
 
 button {
@@ -81,22 +118,22 @@ button {
 }
 
 .watch {
-  background-color: #FF971D;
+  background-color: var(--color-kodalib);
   color: #fff;
-  padding: 5px 20px;
+  padding: 5px 15px;
   border-radius: 10px;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40px;
+  height: 35px;
 }
 
 .play {
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   margin: 0 5px;
 }
 
@@ -104,16 +141,16 @@ button {
   margin-left: 18px;
   background-color: #fff;
   border-radius: 10px;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.bookmark{
-  width: 20px;
-  height: 20px;
+.bookmark {
+  width: 15px;
+  height: 15px;
 }
 
 .loader {
@@ -125,6 +162,53 @@ button {
   background-size: 200% 100%;
   animation: loading 4s infinite; /* Увеличили продолжительность до 4 секунд */
 }
+
+.movie-info {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50%; /* Ширина прямоугольника слева */
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(255,255,255,0) 100%);
+  display: flex;
+  padding: 10px;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.title {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.description {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  text-align: left;
+  color: #fff
+}
+
+.rating-name {
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.rating-num{
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.movie-details {
+  padding: 10px;
+}
+
 
 @keyframes loading {
   0% {
