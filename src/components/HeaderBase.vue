@@ -44,7 +44,7 @@
   border-radius: 10px;
   background-color: var(--color-nav-button);
   margin: 0 10px;
-  height: 70px;
+  height: 60px;
   font-size: 20px;
 }
 
@@ -69,7 +69,7 @@ a{
 }
 
 .icon-img{
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
 }
 </style>
