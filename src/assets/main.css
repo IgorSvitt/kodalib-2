@@ -1,0 +1,20 @@
+@import './base.css';
+
+#app {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 2rem 0 0 0;
+    font-weight: normal;
+}
+
+#app a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+#app a:hover {
+    cursor: pointer;
+    color: var(--color-kodalib);
+    transition: all 0.3s ease;
+}
+
