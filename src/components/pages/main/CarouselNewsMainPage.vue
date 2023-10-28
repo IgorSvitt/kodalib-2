@@ -1,5 +1,5 @@
 <script setup>
-import CarouselNewsItemMainPage from "@/components/Page/Main/CarouselNewsItemMainPage.vue";
+import CarouselNewsItemMainPage from "@/components/pages/main/CarouselNewsItemMainPage.vue";
 
 const film1 = {
   imageLink: 'https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/0891509c-24ad-4f8f-8e7a-527ebbe8d1c7/orig',
@@ -19,7 +19,7 @@ const film2 = {
 const film3 = {
   imageLink: 'https://a.viewy.ru/2022/06/11/dyshevno16549525024134.jpg',
   title: 'Истинная красота',
-  rating: 5.3,
+  rating: 8.3,
   description: 'Старшеклассница Лим Джу-гён с комплексом по поводу своей внешности привыкла краситься и достигла в этом деле определённого мастерства. Она начинает встречаться с двумя самыми видными парнями.'
 }
 </script>

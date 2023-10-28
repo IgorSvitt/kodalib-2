@@ -1,23 +1,37 @@
 <script>
-import {ref, onMounted} from 'vue';
+import {computed, onMounted, ref} from 'vue';
 
+
+function useColorRating(rating) {
+  return computed(() => {
+    if (rating > 7.0) {
+      return '#3bb33b';
+    } else if (rating < 6.0) {
+      return '#ff0000';
+    } else {
+      return '#777777';
+    }
+  });
+}
 export default {
   props: {
-    image: {
-      type: String,
+    filmInfo: {
+      type: Object,
       required: true,
     },
   },
+
   setup(props) {
     const imageSrc = ref('');
     const loading = ref(true);
 
     onMounted(() => {
       // Здесь вы можете выполнить запрос на сервер для загрузки изображения
-      const imageUrl = props.image;
+      const imageUrl = props.filmInfo.poster;
 
       const img = new Image();
       img.src = imageUrl;
+
 
       img.onload = () => {
         imageSrc.value = imageUrl;
@@ -25,7 +39,16 @@ export default {
       };
     });
 
-    return {imageSrc, loading};
+    const ratingColor = useColorRating(props.filmInfo.ratingKoda);
+
+    return {
+      imageSrc,
+      loading,
+      title: props.filmInfo.title,
+      id: props.filmInfo.id,
+      rating: props.filmInfo.ratingKoda.toFixed(1),
+      ratingColor,
+    };
   },
 };
 </script>
@@ -34,17 +57,20 @@ export default {
   <div class="loader-container">
     <div v-if="loading" class="loader"></div>
     <div class="image-container" v-else>
-      <img :src="imageSrc" alt="Изображение" class="img-news">
-      <div class="buttons">
-        <button class="watch" type="button">
-          <img src="@/assets/icons/play.svg" alt="play" class="play">
-          Смотреть
+        <button class="series-item" type="button" @click="$router.push('/series/' + id)">
+          <img :src="imageSrc" alt="Изображение" class="img-news">
         </button>
+      <div class="buttons">
         <button class="like" type="button">
           <img src="@/assets/icons/bookmark.svg" alt="play" class="bookmark">
         </button>
       </div>
-
+      <div class="rating" :style="{ background: ratingColor}">
+        {{rating}}
+      </div>
+      <div class="title">
+        {{title}}
+      </div>
     </div>
   </div>
 </template>
@@ -59,7 +85,6 @@ export default {
 .image-container {
   width: 100%;
   height: 100%;
-  overflow: hidden;
 }
 
 .img-news {
@@ -69,54 +94,65 @@ export default {
   object-fit: cover;
 }
 
+.buttons{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
 button {
   border: none;
 }
 
-.watch {
-  background-color: #FF971D;
-  color: #fff;
-  padding: 5px 20px;
-  border-radius: 10px;
-  font-size: 20px;
-  font-weight: 400;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-}
-
-.play {
-  width: 20px;
-  height: 20px;
-  margin: 0 5px;
-}
-
 .like {
-  margin-left: 18px;
   background-color: #fff;
   border-radius: 10px;
-  width: 40px;
-  height: 40px;
+  width: 43px;
+  height: 35px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .bookmark{
-  width: 20px;
-  height: 20px;
+  width: 17px;
+  height: 17px;
 }
 
 .loader {
   position: absolute;
   border-radius: 10px;
   width: 100%;
-  height: 100%;
+  height: 394px;
   background: linear-gradient(90deg, #ccc 25%, #ddd 50%, #ccc 75%);
   background-size: 200% 100%;
-  animation: loading 4s infinite; /* Увеличили продолжительность до 4 секунд */
+  animation: loading 4s infinite;
+}
+
+.rating{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #fff;
+  width: 43px;
+  height: 35px;
+  border-radius: 10px;
+}
+
+.title{
+  font-size: 18px;
+  color: #1e1e1e;
+  font-weight: 600;
+  width: 100%;
+  margin-top: 5px;
+  text-align: left;
+}
+
+.series-item{
+  border: none;
+  background: none;
+  width: 100%;
+  height: 394px;
 }
 
 @keyframes loading {

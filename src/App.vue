@@ -1,7 +1,7 @@
 <script setup>
 import HeaderBase from "@/components/HeaderBase.vue";
 import FooterBase from "@/components/FooterBase.vue";
-import MainPage from "@/components/Page/Main/MainPage.vue";
+import MainPage from "@/components/pages/main/MainPage.vue";
 </script>
 
 <template>
@@ -9,7 +9,7 @@ import MainPage from "@/components/Page/Main/MainPage.vue";
       <HeaderBase/>
     </header>
     <main>
-      <MainPage/>
+      <router-view/>
     </main>
 
     <footer>

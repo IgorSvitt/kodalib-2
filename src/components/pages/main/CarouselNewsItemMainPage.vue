@@ -7,8 +7,9 @@
     <div class="movie-info">
       <div class="gradient-overlay">
         <div class="movie-details">
-          <h2 class="title">{{ title }}</h2>
-          <p class="rating-name">Рейтинг: <span :style="{ color: ratingColor}" class="rating-num"> {{ rating }}</span></p>
+          <div class="title">{{ title }}<span :style="{ background: ratingColor}" class="rating-num"> {{
+              rating
+            }}</span></div>
           <p class="description">{{ description }}</p>
           <div class="buttons">
             <button class="watch" type="button">
@@ -26,21 +27,19 @@
 </template>
 
 <script>
-import { ref, onMounted, computed } from 'vue';
+import {computed, onMounted, ref} from 'vue';
 
 // Создание пользоватского хука для цветного рейтинга
 function useColorRating(rating) {
-  const ratingColor = computed(() => {
+  return computed(() => {
     if (rating > 7.0) {
       return '#3bb33b';
     } else if (rating < 6.0) {
-      return '#cc0000';
+      return '#ff0000';
     } else {
-      return '#666666';
+      return '#777777';
     }
   });
-
-  return ratingColor;
 }
 
 export default {
@@ -76,7 +75,7 @@ export default {
       imageSrc,
       loading,
       title: props.film.title,
-      rating: props.film.rating,
+      rating: props.film.rating.toFixed(1),
       description: props.film.description,
       ratingColor,
     };
@@ -84,11 +83,7 @@ export default {
 };
 </script>
 
-<style>
-/* Ваш стиль CSS */
-</style>
-
-<style>
+<style scoped>
 .loader-container {
   position: relative;
   width: 100%;
@@ -118,22 +113,22 @@ button {
 }
 
 .watch {
-  background-color: var(--color-kodalib);
+  background: linear-gradient(135deg, #f50 69.93%, #d6bb00);
   color: #fff;
-  padding: 5px 15px;
+  padding: 5px 20px;
   border-radius: 10px;
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 20px;
+  font-weight: 600;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 35px;
+  height: 50px;
 }
 
 .play {
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   margin: 0 5px;
 }
 
@@ -141,16 +136,16 @@ button {
   margin-left: 18px;
   background-color: #fff;
   border-radius: 10px;
-  width: 35px;
-  height: 35px;
+  width: 50px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .bookmark {
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
 }
 
 .loader {
@@ -169,7 +164,7 @@ button {
   top: 0;
   width: 50%; /* Ширина прямоугольника слева */
   height: 100%;
-  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(255,255,255,0) 100%);
+  background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 60%, rgba(255, 255, 255, 0) 100%);
   display: flex;
   padding: 10px;
   color: #fff;
@@ -191,18 +186,15 @@ button {
   color: #fff
 }
 
-.rating-name {
-  font-size: 20px;
-  font-weight: 400;
-  margin-bottom: 10px;
-  text-align: left;
-}
-
-.rating-num{
+.rating-num {
+  display: inline-block;
+  text-align: center;
   font-size: 24px;
   font-weight: 700;
-  margin-bottom: 10px;
-  text-align: left;
+  color: #fff;
+  margin-left: 15px;
+  width: 50px;
+  border-radius: 10px;
 }
 
 .movie-details {

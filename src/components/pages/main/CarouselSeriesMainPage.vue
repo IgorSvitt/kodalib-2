@@ -1,14 +1,16 @@
 <template>
-  <h3 class="title-article">Название</h3>
-  <Carousel v-bind="settings" :breakpoints="breakpoints">
-    <Slide v-for="slide in 10" :key="slide">
-      <carousel-series-item-main-page image="'1'" title="slide" class="item"/>
-    </Slide>
+  <div class="carousel-series">
+    <h3 class="title-article">Название</h3>
+    <Carousel v-bind="settings" :breakpoints="breakpoints">
+      <Slide v-for="film in $props.films" :key="film.id">
+        <carousel-series-item-main-page :filmInfo="film" title="slide" class="item"/>
+      </Slide>
 
-    <template #addons>
-      <Navigation/>
-    </template>
-  </Carousel>
+      <template #addons>
+        <Navigation/>
+      </template>
+    </Carousel>
+  </div>
 </template>
 
 <script>
@@ -16,9 +18,15 @@ import {defineComponent} from 'vue'
 import {Carousel, Navigation, Slide} from 'vue3-carousel'
 
 import 'vue3-carousel/dist/carousel.css'
-import CarouselSeriesItemMainPage from "@/components/Page/Main/CarouselSeriesItemMainPage.vue";
+import CarouselSeriesItemMainPage from "@/components/pages/main/CarouselSeriesItemMainPage.vue";
 
 export default defineComponent({
+  props: {
+    films: {
+      type: Array,
+      required: true,
+    },
+  },
   name: 'Breakpoints',
   components: {
     Carousel,
@@ -53,10 +61,14 @@ export default defineComponent({
 <style scoped>
 .item {
   width: 270px;
-  height: 394px;
+  height: 434px;
 }
 
-.title-article{
+.title-article {
   margin-left: 7.5px;
+}
+
+.carousel-series{
+  margin : 100px 0;
 }
 </style>
