@@ -3,27 +3,38 @@ import {useStore} from "vuex";
 import DescriptionFilmPage from "@/components/pages/film/DescriptionFilmPage.vue";
 import CommentsFilmPage from "@/components/pages/film/CommentsFilmPage.vue";
 import PhotosFilmPage from "@/components/pages/film/PhotosFilmPage.vue";
+import PlayerFilmPage from "@/components/pages/film/PlayerFilmPage.vue";
+import {onMounted, ref} from "vue";
+import {useRoute} from "vue-router";
 
 const store = useStore()
+const route = useRoute()
 const photos = ["https://avatars.mds.yandex.net/get-kinopoisk-image/1600647/8cc58883-6c8a-4edb-9ab5-bfa5713e22b4/orig",
   "https://avatars.mds.yandex.net/get-kinopoisk-image/1946459/bdda55b8-8f29-48d0-bbd7-b26d11a61fda/orig",
   "https://avatars.mds.yandex.net/get-kinopoisk-image/1900788/bb21adce-1cd7-4951-b838-1e41bfe85f5c/orig",
   "https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/ccae3abb-c12e-4ae5-8fef-b40f8a7226a1/orig",
 ]
-const film = store.state.film.info
+const information = ref(null)
+const isLoaded = ref(false)
+onMounted(async () => {
+  await store.dispatch("film/getFilm", route.params.id)
+  isLoaded.value = true
+  information.value = store.state.film.info
+  if (information.value && information.value.title) {
+    document.title = information.value.title;
+  }
+})
 </script>
 
 <template>
-  <div class="film-page">
-    <div class="player">
-      <iframe src="//kodik.cc/video/39523/3e3c091400ff81435c1ac207f9ddbe8f/720p" width="610" height="370"
-              frameborder="0"
-              allowfullscreen allow="autoplay *; fullscreen *"></iframe>
+  <div class="film-page" v-if="isLoaded && information">
+    <div class="film-player">
+     <PlayerFilmPage :voiceover="information.voiceovers"/>
     </div>
     <div class="film-info">
       <div>
         <div class="description">
-          <DescriptionFilmPage :film="film"/>
+          <DescriptionFilmPage :film="information"/>
         </div>
         <div class="comments">
           <CommentsFilmPage/>
@@ -41,16 +52,12 @@ const film = store.state.film.info
 </template>
 
 <style scoped>
-.player {
+.film-player {
   margin: 50px 0;
-  height: 600px;
+  width: 100%;
 }
 
-.player iframe {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-}
+
 
 .film-info {
   display: flex;

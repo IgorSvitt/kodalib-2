@@ -1,11 +1,10 @@
 <script setup>
-
 </script>
 
 <template>
   <nav>
     <div class="row">
-      <a class="name-button col-2 title" href="/public">
+      <a class="name-button col-2 title" href="/">
         Kodalib
       </a>
       <div class="col-9 name-button main">
@@ -26,10 +25,10 @@
         </a>
       </div>
       <div class="name-button col-1 search">
-        <img src="../assets/icons/search.svg" class="icon-img" alt="search">
+        <img src="../../assets/icons/search.svg" class="icon-img" alt="search">
       </div>
       <div class="name-button col-1 user">
-        <img src="../assets/icons/user.svg" class="icon-img" alt="user">
+        <img src="../../assets/icons/user.svg" class="icon-img" alt="user">
       </div>
     </div>
 

@@ -12,7 +12,7 @@
             href="#!"
             role="button"
             data-mdb-ripple-color="dark"
-        ><img src="@/assets/icons/tik-tok.svg" alt="tik-tok" class="icon-img"></a>
+        ><img src="../../assets/icons/tik-tok.svg" alt="tik-tok" class="icon-img"></a>
 
         <!-- Twitter -->
         <a
@@ -20,7 +20,7 @@
             href="#!"
             role="button"
             data-mdb-ripple-color="dark"
-        ><img src="@/assets/icons/vk.svg" alt="vk" class="icon-img"></a>
+        ><img src="../../assets/icons/vk.svg" alt="vk" class="icon-img"></a>
 
         <!-- Insta -->
         <a
@@ -28,7 +28,7 @@
             href="#!"
             role="button"
             data-mdb-ripple-color="dark"
-        ><img src="@/assets/icons/instagram.svg" alt="insta" class="icon-img"></a>
+        ><img src="../../assets/icons/instagram.svg" alt="insta" class="icon-img"></a>
 
         <!-- Instagram -->
         <a
@@ -36,7 +36,7 @@
             href="#!"
             role="button"
             data-mdb-ripple-color="dark"
-        ><img src="@/assets/icons/telegram.svg" alt="telega" class="icon-img"></a>
+        ><img src="../../assets/icons/telegram.svg" alt="telega" class="icon-img"></a>
 
         <!-- Linkedin -->
         <a
@@ -44,7 +44,7 @@
             href="#!"
             role="button"
             data-mdb-ripple-color="dark"
-        ><img src="@/assets/icons/youtube.svg" alt="youtube" class="icon-img"></a>
+        ><img src="../../assets/icons/youtube.svg" alt="youtube" class="icon-img"></a>
 
         <a
             class="btn btn-link btn-floating btn-lg text-dark m-1"

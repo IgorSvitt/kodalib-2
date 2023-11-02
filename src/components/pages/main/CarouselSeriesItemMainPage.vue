@@ -94,6 +94,7 @@ export default {
   object-fit: cover;
 }
 
+
 .buttons{
   position: absolute;
   top: 10px;
@@ -146,6 +147,14 @@ button {
   width: 100%;
   margin-top: 5px;
   text-align: left;
+}
+
+.image-container:hover .title{
+  color: var(--color-kodalib);
+}
+
+.image-container:hover .img-news{
+  opacity: 0.5;
 }
 
 .series-item{

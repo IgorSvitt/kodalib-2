@@ -2,6 +2,7 @@
 import CarouselNewsMainPage from "@/components/pages/main/CarouselNewsMainPage.vue";
 import CarouselSeriesMainPage from "@/components/pages/main/CarouselSeriesMainPage.vue";
 import {useStore} from "vuex";
+import LoadingBase from "@/components/UI/LoadingBase.vue";
 
 const store = useStore()
 
@@ -9,6 +10,7 @@ const films = store.state.film.films
 </script>
 
 <template>
+  <LoadingBase/>
   <div class="news">
     <CarouselNewsMainPage/>
   </div>

@@ -5,6 +5,7 @@ import bootstrap from "bootstrap/dist/js/bootstrap.js"
 import './assets/main.css'
 import store from "@/store/store";
 import router from "@/router/router";
+import './assets/carousel-custom.css';
 
 const app = createApp(App)
 

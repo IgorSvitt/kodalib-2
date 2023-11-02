@@ -40,7 +40,7 @@ const ratingColor = useColorRating(props.film.ratingKoda);
       <div class="title-container">
         <span class="title"> {{ props.film.title }}</span>
         <span class="country" v-for="country in props.film.countries" :key="country">
-        {{ country }}	&ensp;
+        {{ country.name }}	&ensp;
       </span>
         <span class="year">
         {{ props.film.year }}
@@ -77,7 +77,7 @@ const ratingColor = useColorRating(props.film.ratingKoda);
     </div>
     <div class="info-container">
       <span class="info-title">Рейтинг КП</span>
-      <span class="info">{{ props.film.ratingKinopoisk.toFixed(1) }}</span>
+      <span class="info">{{ props.film.ratingKp.toFixed(1) }}</span>
     </div>
   </div>
 

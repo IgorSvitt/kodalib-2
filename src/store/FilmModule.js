@@ -1,7 +1,11 @@
+import axios from "axios";
+import {API_PATH} from "@/api/api";
+import router from "@/router/router";
+
 export const film = {
     namespaced: true,
 
-    state:() => ({
+    state: () => ({
         info: {
             id: 0,
             title: "Паразиты",
@@ -13,23 +17,23 @@ export const film = {
             writers: ["Пон Джун Хо", "Хан Чжэ Вон"],
             poster: "https://avatars.mds.yandex.net/get-kinopoisk-image/1900788/9c3920f8-8e8d-476b-b952-d838a9d97cea/orig",
             ratingKoda: 8.2,
-            ratingKinopoisk: 8.0,
+            ratingKp: 8.0,
             actors: ["Сон Кан Хо", "Чхве У Сик", "Чхве Чжон Эн", "Чо Ё Чжон", "Пак Со Дам", "Ли Сон Гюн", "Чхве Ву Сик", "Чхве Джи У", "Пак Со Джун"],
-            voiceover: ["Дубляж", "Субтитры", "Оригинал", ],
+            voiceovers: ["Дубляж", "Субтитры", "Оригинал",],
         },
         films: [
             {
-                id: 1,
+                id: 2,
                 title: "Королевство зомби",
                 poster: "https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/0891509c-24ad-4f8f-8e7a-527ebbe8d1c7/orig",
                 ratingKoda: 8.9,
                 ratingKinopoisk: 7.7,
             },
             {
-                id: 2,
+                id: 1,
                 title: "Паразиты",
                 poster: "https://ucare.timepad.ru/91198481-1d6f-4a5b-865c-22e335da577c/poster_event_2315049.jpg",
-                ratingKoda: 9.0,
+                ratingKoda: 8.4,
                 ratingKinopoisk: 8.0,
             },
             {
@@ -77,12 +81,25 @@ export const film = {
         ],
     }),
 
-    getters: {
-    },
+    getters: {},
 
     mutations: {
+        setFilm(state, film) {
+            state.info = film
+        }
     },
 
     actions: {
+        async getFilm({commit}, id) {
+            try {
+                await axios.get(API_PATH + "/films/" + id)
+                    .then(response => {
+                        commit('setFilm', response.data.data)
+                    })
+            } catch (e) {
+                await router.push({path: "/404"})
+            }
+
+        }
     },
 }
