@@ -1,1 +1,1 @@
-export const API_PATH = "http://back.kodalib.online/api"
+export const API_PATH = "https://back.kodalib.online/api"
