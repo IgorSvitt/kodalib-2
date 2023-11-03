@@ -39,7 +39,7 @@ const router = createRouter({
 
 
 router.beforeEach(async (to, from, next) => {
-    if (to.name === "FilmPage" && store.state.film.info.id === 0) {
+    if (to.name === "FilmPage" && store.state.film.info.id !== to.params.id) {
         await store.dispatch("film/getFilm", to.params.id);
         next();
     } else {

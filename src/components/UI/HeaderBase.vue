@@ -12,7 +12,7 @@
         <a href="/catalog">
           Каталог
         </a>
-        <a href="genres">
+        <a href="/genres">
           Жанры
         </a>
         <a href="/new">
@@ -48,6 +48,7 @@
   margin: 0 10px;
   height: 60px;
   font-size: 20px;
+  flex-wrap: nowrap;
 }
 
 a{
@@ -57,7 +58,10 @@ a{
 .title {
   max-width: 173px;
   color: var(--color-kodalib);
+  font-size: 24px;
   font-family: 'Black Han Sans', sans-serif;
+  padding: 0;
+  margin: 0 auto;
 }
 
 .main {
@@ -65,6 +69,7 @@ a{
   display: flex;
   justify-content: space-around;
   padding: 0 90px;
+  width: 100%;
 }
 
 .user, .search {
