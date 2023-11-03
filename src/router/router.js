@@ -30,11 +30,13 @@ const routes = [
 const router = createRouter({
     routes,
     history: createWebHistory(""),
+    scrollBehavior(to, from, savedPosition) {
+        // всегда прокручивать до верха
+        return { top: 0 }
+    },
 });
 
-router.afterEach((to,from,next) => {
-    window.scrollTo(0,0);
-});
+
 
 router.beforeEach(async (to, from, next) => {
     if (to.name === "FilmPage" && store.state.film.info.id === 0) {

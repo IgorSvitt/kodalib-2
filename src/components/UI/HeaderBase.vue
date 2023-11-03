@@ -1,11 +1,12 @@
 <script setup>
+
 </script>
 
 <template>
   <nav>
     <div class="row">
       <a class="name-button col-2 title" href="/">
-        Kodalib
+        K오DALIB
       </a>
       <div class="col-9 name-button main">
         <a href="/catalog">
@@ -36,6 +37,8 @@
 </template>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+
 .name-button {
   display: flex;
   align-items: center;
@@ -54,6 +57,7 @@ a{
 .title {
   max-width: 173px;
   color: var(--color-kodalib);
+  font-family: 'Black Han Sans', sans-serif;
 }
 
 .main {

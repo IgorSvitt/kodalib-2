@@ -16,8 +16,13 @@ const photos = ["https://avatars.mds.yandex.net/get-kinopoisk-image/1600647/8cc5
 ]
 const information = ref(null)
 const isLoaded = ref(false)
+
+
+
 onMounted(async () => {
-  await store.dispatch("film/getFilm", route.params.id)
+  if (store.state.film.info.id === 0) {
+    await store.dispatch("film/getFilm", route.params.id)
+  }
   isLoaded.value = true
   information.value = store.state.film.info
   if (information.value && information.value.title) {

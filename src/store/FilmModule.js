@@ -23,14 +23,14 @@ export const film = {
         },
         films: [
             {
-                id: 2,
+                id: 1,
                 title: "Королевство зомби",
                 poster: "https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/0891509c-24ad-4f8f-8e7a-527ebbe8d1c7/orig",
                 ratingKoda: 8.9,
                 ratingKinopoisk: 7.7,
             },
             {
-                id: 1,
+                id: 2,
                 title: "Паразиты",
                 poster: "https://ucare.timepad.ru/91198481-1d6f-4a5b-865c-22e335da577c/poster_event_2315049.jpg",
                 ratingKoda: 8.4,

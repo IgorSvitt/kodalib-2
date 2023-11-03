@@ -85,6 +85,7 @@ export default {
 .image-container {
   width: 100%;
   height: 100%;
+  transition: all 0.3s ease;
 }
 
 .img-news {
@@ -151,10 +152,12 @@ button {
 
 .image-container:hover .title{
   color: var(--color-kodalib);
+  transition: all 0.3s ease;
 }
 
 .image-container:hover .img-news{
   opacity: 0.5;
+  transition: all 0.3s ease;
 }
 
 .series-item{

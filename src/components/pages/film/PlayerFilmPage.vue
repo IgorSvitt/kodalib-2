@@ -31,11 +31,15 @@ const activeVoiceover = ref(0)
   align-items: center;
   width: 100%;
   height: 100%;
+
 }
 .player{
   width: 885px;
   height: 500px;
   margin-right: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #EFEFEF;
 }
 
 .player iframe {
