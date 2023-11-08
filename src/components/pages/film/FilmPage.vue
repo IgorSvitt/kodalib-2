@@ -2,7 +2,7 @@
 import {useStore} from "vuex";
 import DescriptionFilmPage from "@/components/pages/film/DescriptionFilmPage.vue";
 import CommentsFilmPage from "@/components/pages/film/CommentsFilmPage.vue";
-import PhotosFilmPage from "@/components/pages/film/PhotosFilmPage.vue";
+import PhotosFilmPage from "@/components/pages/film/PhotoFilmPage.vue";
 import PlayerFilmPage from "@/components/pages/film/PlayerFilmPage.vue";
 import {onMounted, ref} from "vue";
 import {useRoute} from "vue-router";

@@ -1,0 +1,38 @@
+<template>
+  <div class="photo-modal">
+    <img :src="photo" alt="Photo" @click="closeModal" />
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    photo: String,
+  },
+  methods: {
+    closeModal() {
+      this.$emit('close'); // Эмиттируем событие для закрытия модального окна
+    },
+  },
+};
+</script>
+
+<style scoped>
+.photo-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.photo-modal img {
+  max-width: 90%;
+  max-height: 90%;
+}
+</style>

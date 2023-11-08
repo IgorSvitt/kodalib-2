@@ -1,8 +1,10 @@
 <script>
 import {computed, onMounted, ref} from 'vue';
+import ModalPhotoFilmPage from "@/components/pages/film/ModalPhotoFilmPage.vue";
 
 
 export default {
+  components: {ModalPhotoFilmPage},
   props: {
     photo: {
       type: String,
@@ -15,7 +17,6 @@ export default {
     const loading = ref(true);
 
     onMounted(() => {
-      // Здесь вы можете выполнить запрос на сервер для загрузки изображения
       const imageUrl = props.photo
 
       const img = new Image();
@@ -28,10 +29,23 @@ export default {
       };
     });
 
+    const modalOpen = ref(false);
+
+    const openModal = () => {
+      modalOpen.value = true;
+    };
+
+    const closeModal = () => {
+      modalOpen.value = false;
+    };
+
 
     return {
       imageSrc,
       loading,
+      closeModal,
+      openModal,
+      modalOpen
     };
   },
 };
@@ -41,7 +55,8 @@ export default {
   <div class="loader-container">
     <div v-if="loading" class="loader"></div>
     <div class="image-container" v-else>
-      <img :src="imageSrc" alt="Изображение" class="img-news">
+      <img :src="imageSrc" alt="Изображение" class="img-news" @click="openModal" >
+      <ModalPhotoFilmPage :photo="photo" @click="closeModal" v-if="modalOpen"/>
     </div>
   </div>
 </template>
@@ -56,6 +71,10 @@ export default {
 .image-container {
   width: 100%;
   height: 100%;
+}
+
+.image-container:hover {
+  cursor: pointer;
 }
 
 .img-news {
