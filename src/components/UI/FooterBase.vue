@@ -28,14 +28,16 @@
             href="#!"
             role="button"
             data-mdb-ripple-color="dark"
+            target="_blank"
         ><img src="../../assets/icons/instagram.svg" alt="insta" class="icon-img"></a>
 
         <!-- Instagram -->
         <a
             class="btn btn-link btn-floating btn-lg text-dark m-1"
-            href="#!"
+            href="https://t.me/kodalib"
             role="button"
             data-mdb-ripple-color="dark"
+            target="_blank"
         ><img src="../../assets/icons/telegram.svg" alt="telega" class="icon-img"></a>
 
         <!-- Linkedin -->

@@ -62,7 +62,9 @@ export default {
         </button>
       <div class="buttons">
         <button class="like" type="button">
-          <img src="@/assets/icons/bookmark.svg" alt="play" class="bookmark">
+          <svg xmlns="http://www.w3.org/2000/svg" id="Filled" viewBox="0 0 24 24" width="17" height="17">
+            <path d="M2.849,23.55a2.954,2.954,0,0,0,3.266-.644L12,17.053l5.885,5.853a2.956,2.956,0,0,0,2.1.881,3.05,3.05,0,0,0,1.17-.237A2.953,2.953,0,0,0,23,20.779V5a5.006,5.006,0,0,0-5-5H6A5.006,5.006,0,0,0,1,5V20.779A2.953,2.953,0,0,0,2.849,23.55Z" fill="#1e1e1e"/>
+          </svg>
         </button>
       </div>
       <div class="rating" :style="{ background: ratingColor}">
@@ -114,12 +116,22 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: transform 0.3s ease
 }
 
-.bookmark{
-  width: 17px;
-  height: 17px;
+.like:hover {
+  transform: scale(1.04);
 }
+
+.like:hover svg path {
+  fill: #f50;
+  transition: fill 0.3s ease;
+}
+
+.like svg path {
+  transition: fill 0.3s ease;
+}
+
 
 .loader {
   position: absolute;

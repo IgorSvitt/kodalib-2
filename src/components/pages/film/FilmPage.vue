@@ -9,11 +9,6 @@ import {useRoute} from "vue-router";
 
 const store = useStore()
 const route = useRoute()
-const photos = ["https://avatars.mds.yandex.net/get-kinopoisk-image/1600647/8cc58883-6c8a-4edb-9ab5-bfa5713e22b4/orig",
-  "https://avatars.mds.yandex.net/get-kinopoisk-image/1946459/bdda55b8-8f29-48d0-bbd7-b26d11a61fda/orig",
-  "https://avatars.mds.yandex.net/get-kinopoisk-image/1900788/bb21adce-1cd7-4951-b838-1e41bfe85f5c/orig",
-  "https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/ccae3abb-c12e-4ae5-8fef-b40f8a7226a1/orig",
-]
 const information = ref(null)
 const isLoaded = ref(false)
 
@@ -47,8 +42,8 @@ onMounted(async () => {
       </div>
 
       <div class="photos">
-        <div v-for="photo in photos" :key="photo" class="photo">
-          <PhotosFilmPage :photo="photo"/>
+        <div v-for="photo in information.photos" :key="photo.id" class="photo">
+          <PhotosFilmPage :photo="photo.link"/>
         </div>
       </div>
     </div>
