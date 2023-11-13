@@ -94,7 +94,7 @@ export const film = {
             try {
                 await axios.get(API_PATH + "/films/" + id)
                     .then(response => {
-                        commit('setFilm', response.data.data)
+                        commit('setFilm', response.data)
                     })
             } catch (e) {
                 await router.push({path: "/404"})

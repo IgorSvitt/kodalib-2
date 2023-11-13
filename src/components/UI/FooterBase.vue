@@ -5,7 +5,7 @@
 <template>
   <footer class="text-center text-white footer" style="background-color: #f1f1f1;">
     <div class="container pt-4">
-      <section class="mb-4">
+      <section class="mb-4 text-center">
         <!-- Tik Tok -->
         <a
             class="btn btn-link btn-floating btn-lg text-dark m-1"
@@ -56,7 +56,7 @@
         ><i class="fab fa-github"></i
         ></a>
       </section>
-      <section class="mb-4">
+      <section class="mb-4 text-center">
         <a
             class="btn btn-link btn-floating btn-lg text-dark m-1"
             href="/catalog"
@@ -95,7 +95,7 @@
     </div>
 
     <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      © 2023 Kodalib :)
+      © 2023 Kodalib
     </div>
   </footer>
 </template>

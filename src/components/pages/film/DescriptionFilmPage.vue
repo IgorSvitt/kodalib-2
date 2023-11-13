@@ -58,20 +58,20 @@ const ratingColor = useColorRating(props.film.ratingKoda);
     <div class="info-container">
       <span class="info-title">Режиссер</span>
       <div class="info" v-for="director in props.film.directors" :key="director">
-        {{ director }} &ensp;
+        {{ director.name }} &ensp;
       </div>
     </div>
     <div class="info-container">
       <span class="info-title">Сценаристы</span>
       <div class="info" v-for="writer in props.film.writers" :key="writer">
-        {{ writer }} &ensp;
+        {{ writer.name }} &ensp;
       </div>
     </div>
     <div class="info-container">
       <span class="info-title">Актеры</span>
       <div class="info">
         <span class="actor" v-for="actor in props.film.actors" :key="actor">
-          {{ actor }} &ensp;
+          {{ actor.name }} &ensp;
         </span>
       </div>
     </div>

@@ -19,7 +19,7 @@ const activeVoiceover = ref(0)
     </div>
     <div class="voiceover">
       <button v-for="(voice,index) in voiceover" :key="index" class="voice-btn" :class="{active:(index===activeVoiceover)}" type="button" @click="activeVoiceover = index">
-        <span class="voice">{{ voice.voiceover.title }}</span>
+        <span class="voice">{{ voice.voiceover.name }}</span>
       </button>
     </div>
   </div>
