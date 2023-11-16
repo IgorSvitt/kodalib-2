@@ -9,12 +9,12 @@
         <!-- Tik Tok -->
         <a
             class="btn btn-link btn-floating btn-lg text-dark m-1"
-            href="#!"
+            href="https://www.tiktok.com/@koda.lib"
             role="button"
             data-mdb-ripple-color="dark"
         ><img src="../../assets/icons/tik-tok.svg" alt="tik-tok" class="icon-img"></a>
 
-        <!-- Twitter -->
+        <!-- VK -->
         <a
             class="btn btn-link btn-floating btn-lg text-dark m-1"
             href="#!"
@@ -25,13 +25,13 @@
         <!-- Insta -->
         <a
             class="btn btn-link btn-floating btn-lg text-dark m-1"
-            href="#!"
+            href="https://www.instagram.com/koda.lib/"
             role="button"
             data-mdb-ripple-color="dark"
             target="_blank"
         ><img src="../../assets/icons/instagram.svg" alt="insta" class="icon-img"></a>
 
-        <!-- Instagram -->
+        <!-- Telega -->
         <a
             class="btn btn-link btn-floating btn-lg text-dark m-1"
             href="https://t.me/kodalib"
@@ -40,10 +40,10 @@
             target="_blank"
         ><img src="../../assets/icons/telegram.svg" alt="telega" class="icon-img"></a>
 
-        <!-- Linkedin -->
+        <!-- Youtube -->
         <a
             class="btn btn-link btn-floating btn-lg text-dark m-1"
-            href="#!"
+            href="https://www.youtube.com/@kodalib"
             role="button"
             data-mdb-ripple-color="dark"
         ><img src="../../assets/icons/youtube.svg" alt="youtube" class="icon-img"></a>
