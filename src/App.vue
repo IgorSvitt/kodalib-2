@@ -1,6 +1,7 @@
 <script setup>
 import HeaderBase from "@/components/UI/HeaderBase.vue";
 import FooterBase from "@/components/UI/FooterBase.vue";
+import SorryAdaptive from "@/components/UI/SorryAdaptive.vue";
 </script>
 
 <template>
@@ -16,9 +17,7 @@ import FooterBase from "@/components/UI/FooterBase.vue";
       <FooterBase/>
     </footer>
   </div>
-  <div class="sorry">
-    <h1>Извините, но сайт ещё не адаптирован под мобильные устройства</h1>
-  </div>
+  <SorryAdaptive class="sorry"/>
 </template>
 
 <style scoped>
@@ -30,17 +29,8 @@ import FooterBase from "@/components/UI/FooterBase.vue";
   .main-field {
     display: none;
   }
-
   .sorry {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-    color: #ccc;
-  }
-  h1{
-    font-size: 24px;
-    text-align: center;
   }
 }
 </style>
