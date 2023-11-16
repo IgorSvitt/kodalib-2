@@ -3,7 +3,7 @@
     <h3 class="title-article">Название</h3>
     <Carousel v-bind="settings" :breakpoints="breakpoints">
       <Slide v-for="film in $props.films" :key="film.id">
-        <carousel-series-item-main-page :filmInfo="film" title="slide" class="item"/>
+        <carousel-series-item-main-page :filmInfo="film" :title="film.title" class="item"/>
       </Slide>
 
       <template #addons>
@@ -26,6 +26,10 @@ export default defineComponent({
       type: Array,
       required: true,
     },
+    title:{
+      type: String,
+      required: true,
+    }
   },
   name: 'Breakpoints',
   components: {

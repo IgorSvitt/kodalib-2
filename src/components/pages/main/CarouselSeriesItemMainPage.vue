@@ -58,7 +58,7 @@ export default {
     <div v-if="loading" class="loader"></div>
     <div class="image-container" v-else>
         <button class="series-item" type="button" @click="$router.push('/film/' + id)">
-          <img :src="imageSrc" alt="Изображение" class="img-news">
+          <img :src="imageSrc" :alt="title" class="img-news">
         </button>
       <div class="buttons">
         <button class="like" type="button">

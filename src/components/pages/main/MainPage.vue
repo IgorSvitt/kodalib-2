@@ -15,7 +15,7 @@ const films = store.state.film.films
     <CarouselNewsMainPage/>
   </div>
   <div class="series">
-    <CarouselSeriesMainPage :films="films"/>
+    <CarouselSeriesMainPage :films="films" :title="'Топ 10'"/>
   </div>
 </template>
 

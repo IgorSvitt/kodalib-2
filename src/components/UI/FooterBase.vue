@@ -12,6 +12,7 @@
             href="https://www.tiktok.com/@koda.lib"
             role="button"
             data-mdb-ripple-color="dark"
+            target="_blank"
         ><img src="../../assets/icons/tik-tok.svg" alt="tik-tok" class="icon-img"></a>
 
         <!-- VK -->
@@ -20,6 +21,7 @@
             href="#!"
             role="button"
             data-mdb-ripple-color="dark"
+            target="_blank"
         ><img src="../../assets/icons/vk.svg" alt="vk" class="icon-img"></a>
 
         <!-- Insta -->
@@ -46,15 +48,9 @@
             href="https://www.youtube.com/@kodalib"
             role="button"
             data-mdb-ripple-color="dark"
+            target="_blank"
         ><img src="../../assets/icons/youtube.svg" alt="youtube" class="icon-img"></a>
 
-        <a
-            class="btn btn-link btn-floating btn-lg text-dark m-1"
-            href="#!"
-            role="button"
-            data-mdb-ripple-color="dark"
-        ><i class="fab fa-github"></i
-        ></a>
       </section>
       <section class="mb-4 text-center">
         <a
