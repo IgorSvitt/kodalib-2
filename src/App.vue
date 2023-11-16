@@ -35,11 +35,11 @@ import FooterBase from "@/components/UI/FooterBase.vue";
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 80vh;
     color: #ccc;
   }
   h1{
-    font-size: 30px;
+    font-size: 24px;
     text-align: center;
   }
 }
