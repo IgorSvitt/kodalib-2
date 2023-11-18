@@ -1,5 +1,6 @@
 <script setup>
 import {ref} from "vue";
+import SeasonsPlayerSeriesPage from "@/components/pages/series/SeasonsPlayerSeriesPage.vue";
 
 const props = defineProps({
   voiceover: {
@@ -8,19 +9,26 @@ const props = defineProps({
   }
 })
 const activeVoiceover = ref(0)
+
+const handleChangeVoiceover = (index) => {
+  activeVoiceover.value = index;
+};
 </script>
 
 <template>
   <div class="player-container">
     <div class="player">
-      <iframe :src="voiceover[activeVoiceover].linkToWatch" width="610" height="370"
+      <iframe :src="voiceover[activeVoiceover].seasons[0].episodes[0].linkToWatch" width="610" height="370"
               allowfullscreen allow="autoplay *; fullscreen *"></iframe>
     </div>
     <div class="voiceover">
-      <button v-for="(voice,index) in voiceover" :key="index" class="voice-btn" :class="{active:(index===activeVoiceover)}" type="button" @click="activeVoiceover = index">
+      <button v-for="(voice,index) in voiceover" :key="index" class="voice-btn" :class="{active:(index===activeVoiceover)}" type="button" @click="handleChangeVoiceover(index)">
         <span class="voice">{{ voice.voiceover.name }}</span>
       </button>
     </div>
+  </div>
+  <div class="seasons">
+    <SeasonsPlayerSeriesPage :seasons="voiceover[activeVoiceover].seasons" />
   </div>
 </template>
 
@@ -75,5 +83,9 @@ const activeVoiceover = ref(0)
 
 .voice-btn.active{
   color: #FF971D;
+}
+
+.seasons{
+  margin-top: 50px;
 }
 </style>

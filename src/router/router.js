@@ -3,6 +3,7 @@ import {createRouter, createWebHistory, useRoute} from "vue-router";
 import FilmPage from "@/components/pages/film/FilmPage.vue";
 import NotFoundPage from "@/components/pages/error/NotFoundPage.vue";
 import store from "@/store/store";
+import SeriesPage from "@/components/pages/series/SeriesPage.vue";
 
 const route = useRoute()
 
@@ -15,6 +16,12 @@ const routes = [
         path: "/film/:id",
         name: "FilmPage",
         component: FilmPage,
+        meta: { requiresData: true },
+    },
+    {
+        path: "/series/:id",
+        name: "SeriesPage",
+        component: SeriesPage,
         meta: { requiresData: true },
     },
     {

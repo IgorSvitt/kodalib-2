@@ -1,55 +1,35 @@
-<script>
-import {computed, onMounted, ref} from 'vue';
+<script setup>
+import { ref, onMounted } from 'vue';
 import ModalPhotoFilmPage from "@/components/pages/film/ModalPhotoFilmPage.vue";
 
+const props = defineProps(['photo']);
 
-export default {
-  components: {ModalPhotoFilmPage},
-  props: {
-    photo: {
-      type: String,
-      required: true,
-    },
-  },
+const imageSrc = ref('');
+const loading = ref(true);
 
-  setup(props) {
-    const imageSrc = ref('');
-    const loading = ref(true);
+onMounted(() => {
+  const imageUrl = props.photo;
 
-    onMounted(() => {
-      const imageUrl = props.photo
+  const img = new Image();
+  img.src = imageUrl;
 
-      const img = new Image();
-      img.src = imageUrl;
+  img.onload = () => {
+    imageSrc.value = imageUrl;
+    loading.value = false;
+  };
+});
 
+const modalOpen = ref(false);
 
-      img.onload = () => {
-        imageSrc.value = imageUrl;
-        loading.value = false;
-      };
-    });
+const openModal = () => {
+  modalOpen.value = true;
+};
 
-    const modalOpen = ref(false);
-
-    const openModal = () => {
-      modalOpen.value = true;
-    };
-
-    const closeModal = () => {
-      modalOpen.value = false;
-    };
-
-
-    return {
-      imageSrc,
-      loading,
-      closeModal,
-      openModal,
-      modalOpen
-    };
-  },
+const closeModal = () => {
+  modalOpen.value = false;
 };
 </script>
+
 
 <template>
   <div class="loader-container">
