@@ -16,7 +16,7 @@
 <style scoped>
 .comments-container {
   border-radius: 10px;
-  background-color: #EFEFEF;
+  background-color: var(--color-background-mute);
   padding: 15px 20px;
   display: block;
   width: 100%;
@@ -25,7 +25,7 @@
 .comment-title {
   font-size: 32px;
   font-weight: 700;
-  color: #1e1e1e;
+  color: var(--color-text-black);
 }
 
 .comments{

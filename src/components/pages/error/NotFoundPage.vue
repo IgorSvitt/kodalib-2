@@ -26,6 +26,6 @@ span{
 
 
 .to-home:hover, .to-home{
-  color: #fff;
+  color: var(--color-text-white);
 }
 </style>

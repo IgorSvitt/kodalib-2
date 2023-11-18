@@ -2,7 +2,7 @@
   <div class="carousel__series">
     <Carousel v-bind="settings" :breakpoints="breakpoints">
         <Slide v-for="episode in $props.episodes" :key="episode.id">
-          <EpisodePlayerSeriesPage :episodeInfo="episode" class="item"/>
+          <EpisodePlayerSeriesPage :episodeInfo="episode" class="item" :key="episode"/>
         </Slide>
       <template #addons>
         <Navigation  v-if="$props.episodes.length > 4"/>

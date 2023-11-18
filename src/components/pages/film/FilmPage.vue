@@ -6,6 +6,7 @@ import PhotosFilmPage from "@/components/pages/film/PhotoFilmPage.vue";
 import PlayerFilmPage from "@/components/pages/film/PlayerFilmPage.vue";
 import {onMounted, ref} from "vue";
 import {useRoute} from "vue-router";
+import LoaderFilmPage from "@/components/pages/film/LoaderFilmPage.vue";
 
 const store = useStore()
 const route = useRoute()
@@ -48,6 +49,9 @@ onMounted(async () => {
       </div>
     </div>
   </div>
+  <div v-else>
+    <LoaderFilmPage />
+  </div>
 
 </template>
 
@@ -56,8 +60,6 @@ onMounted(async () => {
   margin: 50px 0;
   width: 100%;
 }
-
-
 
 .film-info {
   display: flex;

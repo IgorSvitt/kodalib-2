@@ -27,8 +27,7 @@ onMounted(() => {
       <img :src="episodeInfo.poster" alt="episode poster" v-else>
     </div>
     <div class="episode__info">
-      <div v-if="loading" class="loader"></div>
-      <div class="episode__number" v-else>{{ episodeInfo.number }} серия</div>
+      <div class="episode__number">{{ episodeInfo.number }} серия</div>
     </div>
   </div>
 </template>
@@ -55,6 +54,7 @@ onMounted(() => {
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
+  background-color: #ccc;
 }
 
 .episode__info {

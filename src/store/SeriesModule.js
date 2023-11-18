@@ -42,7 +42,7 @@ export const series = {
                             {
                                 number: 1,
                                 linkToWatch: "//kodik.cc/video/41167/4509cc271da1e4cb695ed0bede4aeeb4/720p",
-                                poster: "https://www.vastas.com/wp-content/uploads/2019/12/placeholder.jpg"
+                                poster: "https://klike.net/uploads/posts/2019-11/1574605343_39.jpg"
                             },
                             {
                                 number: 2,
