@@ -20,6 +20,7 @@ watch(() => props.seasons, (newSeasons) => {
   activeSeason.value = newSeasons[0].number;
 });
 
+
 </script>
 
 <template>

@@ -14,11 +14,12 @@ const isLoaded = ref(false)
 
 
 onMounted(async () => {
-  // if (store.state.film.info.id === 0) {
-  //   await store.dispatch("film/getFilm", route.params.id)
-  // }
+  if (store.state.film.info.id === 0) {
+    await store.dispatch("series/getSeries", route.params.id)
+  }
   isLoaded.value = true
   information.value = store.state.series.info
+  console.log(information.value)
   if (information.value && information.value.title) {
     document.title = information.value.title;
   }
@@ -28,7 +29,7 @@ onMounted(async () => {
 <template>
   <div class="film-page" v-if="isLoaded && information">
     <div class="film-player">
-      <PlayerSeriesPage :voiceover="information.voiceovers"/>
+      <PlayerSeriesPage :voiceover="information.voiceiversSeries"/>
     </div>
     <div class="film-info">
       <div>

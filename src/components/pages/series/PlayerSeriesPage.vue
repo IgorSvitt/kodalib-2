@@ -75,6 +75,7 @@ const handleChangeVoiceover = (index) => {
   font-family: 'Ubuntu', sans-serif;
   cursor: pointer;
   outline: none;
+  text-align: left;
 }
 
 .voice:hover{

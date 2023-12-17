@@ -21,7 +21,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="episode">
+  <button class="episode">
     <div class="episode__img" >
       <div v-if="loading" class="loader"></div>
       <img :src="episodeInfo.poster" alt="episode poster" v-else>
@@ -29,7 +29,7 @@ onMounted(() => {
     <div class="episode__info">
       <div class="episode__number">{{ episodeInfo.number }} серия</div>
     </div>
-  </div>
+  </button>
 </template>
 
 
@@ -40,6 +40,8 @@ onMounted(() => {
   align-items: center;
   width: 100%;
   height: 100%;
+  border: none;
+  background-color: transparent;
 }
 
 .episode__img {

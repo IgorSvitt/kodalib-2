@@ -30,7 +30,7 @@ onMounted(async () => {
 <template>
   <div class="film-page" v-if="isLoaded && information">
     <div class="film-player">
-     <PlayerFilmPage :voiceover="information.voiceovers"/>
+     <PlayerFilmPage :voiceover="information.voiceoversFilm"/>
     </div>
     <div class="film-info">
       <div>
