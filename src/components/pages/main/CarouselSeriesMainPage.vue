@@ -3,7 +3,8 @@
     <h3 class="title-article">Название</h3>
     <Carousel v-bind="settings" :breakpoints="breakpoints">
       <Slide v-for="film in $props.films" :key="film.id">
-        <carousel-series-item-main-page :filmInfo="film" :title="film.title" class="item"/>
+        <CommonFilm film-type="'film'" film="film" class="item"/>
+<!--        <carousel-series-item-main-page :filmInfo="film" :title="film.title" class="item"/>-->
       </Slide>
 
       <template #addons>
@@ -19,6 +20,7 @@ import {Carousel, Navigation, Slide} from 'vue3-carousel'
 
 import 'vue3-carousel/dist/carousel.css'
 import CarouselSeriesItemMainPage from "@/components/pages/main/CarouselSeriesItemMainPage.vue";
+import CommonFilm from "@/components/common/film/FilmCard.vue";
 
 export default defineComponent({
   props: {
@@ -33,6 +35,7 @@ export default defineComponent({
   },
   name: 'Breakpoints',
   components: {
+    CommonFilm,
     Carousel,
     Slide,
     Navigation,
@@ -69,7 +72,7 @@ export default defineComponent({
 }
 
 .title-article {
-  margin-left: 7.5px;
+  margin-left: 8px;
 }
 
 .carousel-series{

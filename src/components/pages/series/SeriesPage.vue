@@ -6,22 +6,47 @@ import PhotosFilmPage from "@/components/pages/film/PhotoFilmPage.vue";
 import {onMounted, ref} from "vue";
 import {useRoute} from "vue-router";
 import PlayerSeriesPage from "@/components/pages/series/PlayerSeriesPage.vue";
+import SeriesPageSkeleton from "@/components/pages/series/SeriesPageSkeleton.vue";
 
 const store = useStore()
 const route = useRoute()
 const information = ref(null)
 const isLoaded = ref(false)
 
+const props = defineProps({
+  numberEpisode: {
+    type: Number,
+    required: true,
+  },
+  numberSeason: {
+    type: Number,
+    required: true,
+  },
+  voiceover: {
+    type: Array,
+    required: true,
+  },
+});
+
 
 onMounted(async () => {
-  if (store.state.film.info.id === 0) {
-    await store.dispatch("series/getSeries", route.params.id)
+  try{
+    isLoaded.value = false
+    if (store.state.series.info.id === 0) {
+      console.log(route.params.id)
+      await store.dispatch("series/getSeries", route.params.id)
+    }
+
+    information.value = store.state.series.info
+    console.log(information.value)
+    if (information.value && information.value.title) {
+      document.title = information.value.title;
+    }
+  } catch (e) {
+    console.log(e)
   }
-  isLoaded.value = true
-  information.value = store.state.series.info
-  console.log(information.value)
-  if (information.value && information.value.title) {
-    document.title = information.value.title;
+  finally {
+    isLoaded.value = true
   }
 })
 </script>
@@ -40,7 +65,6 @@ onMounted(async () => {
           <CommentsFilmPage/>
         </div>
       </div>
-
       <div class="photos">
         <div v-for="photo in information.photos" :key="photo.id" class="photo">
           <PhotosFilmPage :photo="photo.link"/>
@@ -48,12 +72,14 @@ onMounted(async () => {
       </div>
     </div>
   </div>
-
+  <div v-if="!isLoaded">
+    <SeriesPageSkeleton/>
+  </div>
 </template>
 
 <style scoped>
 .film-player {
-  margin: 50px 0;
+  margin: 100px 0;
   width: 100%;
 }
 

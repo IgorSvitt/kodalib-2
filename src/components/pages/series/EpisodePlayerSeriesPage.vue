@@ -1,5 +1,6 @@
 <script setup>
-import { ref, onMounted, defineProps } from 'vue';
+import {ref, onMounted, defineProps, computed} from 'vue';
+import {useStore} from "vuex";
 
 const props = defineProps({
   episodeInfo: {
@@ -18,16 +19,30 @@ onMounted(() => {
     loading.value = false;
   };
 });
+
+const store = useStore();
+const activeEpisode = ref(1);
+
+const handleChangeEpisode = async (linkToWatch, number) => {
+  await store.commit("series/setEpisode", linkToWatch);
+  activeEpisode.value = number;
+  console.log(activeEpisode.value);
+};
+
+const isActiveEpisode = computed(() => {
+  return activeEpisode.value === props.episodeInfo.number;
+});
+
 </script>
 
 <template>
-  <button class="episode">
-    <div class="episode__img" >
+  <button class="episode" @click="handleChangeEpisode(episodeInfo.linkToWatch, episodeInfo.number)">
+    <div class="episode__img">
       <div v-if="loading" class="loader"></div>
-      <img :src="episodeInfo.poster" alt="episode poster" v-else>
+      <img :src="episodeInfo.poster" alt="episode poster" v-else/>
     </div>
     <div class="episode__info">
-      <div class="episode__number">{{ episodeInfo.number }} серия</div>
+      <div class="episode__number" :class="{'active':isActiveEpisode}">{{ episodeInfo.number }} серия</div>
     </div>
   </button>
 </template>
@@ -73,6 +88,7 @@ onMounted(() => {
   color: #1e1e1e;
 }
 
+
 .loader {
   border-radius: 10px;
   width: 100%;
@@ -90,5 +106,6 @@ onMounted(() => {
     background-position: -100% 0;
   }
 }
+
 
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="carousel__series">
     <Carousel v-bind="settings" :breakpoints="breakpoints">
-        <Slide v-for="episode in $props.episodes" :key="episode.id">
+        <Slide v-for="(episode, index) in $props.episodes" :key="index">
           <EpisodePlayerSeriesPage :episodeInfo="episode" class="item" :key="episode"/>
         </Slide>
       <template #addons>

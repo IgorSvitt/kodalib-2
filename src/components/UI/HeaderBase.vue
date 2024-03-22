@@ -5,10 +5,10 @@
 <template>
   <nav>
     <div class="row">
-      <a class="name-button col-2 title" href="/">
+      <a class="name-button col-9 title" href="/">
         K오DALIB
       </a>
-      <div class="col-9 name-button main">
+      <div class="col-1 name-button main">
         <a href="/catalog">
           Каталог
         </a>
@@ -29,7 +29,9 @@
         <img src="../../assets/icons/search.svg" class="icon-img" alt="search">
       </div>
       <div class="name-button col-1 user">
+        <a href="/login">
         <img src="../../assets/icons/user.svg" class="icon-img" alt="user">
+        </a>
       </div>
     </div>
 
@@ -43,8 +45,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
-  background-color: var(--color-nav-button);
   margin: 0 10px;
   height: 60px;
   font-size: 20px;
@@ -68,8 +68,8 @@ a{
   max-width: 754px;
   display: flex;
   justify-content: space-around;
-  padding: 0 90px;
   width: 100%;
+  padding: 0 90px;
 }
 
 .user, .search {
@@ -77,7 +77,11 @@ a{
 }
 
 .icon-img{
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
+}
+.row{
+  max-width: 1140px;
+  margin: auto;
 }
 </style>

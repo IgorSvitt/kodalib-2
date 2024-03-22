@@ -1,64 +1,55 @@
-<script>
+<script async setup>
 import {computed, onMounted, ref} from 'vue';
 
 
-function useColorRating(rating) {
-  return computed(() => {
-    if (rating > 7.0) {
-      return '#3bb33b';
-    } else if (rating < 6.0) {
-      return '#ff0000';
-    } else {
-      return '#777777';
-    }
-  });
-}
-export default {
-  props: {
-    filmInfo: {
-      type: Object,
-      required: true,
-    },
+const props = defineProps({
+  film: {
+    type: Object,
+    required: true,
   },
-
-  setup(props) {
-    const imageSrc = ref('');
-    const loading = ref(true);
-
-    onMounted(() => {
-      const imageUrl = props.filmInfo.poster;
-
-      const img = new Image();
-      img.src = imageUrl;
-
-
-      img.onload = () => {
-        imageSrc.value = imageUrl;
-        loading.value = false;
-      };
-    });
-
-    const ratingColor = useColorRating(props.filmInfo.ratingKoda);
-
-    return {
-      imageSrc,
-      loading,
-      title: props.filmInfo.title,
-      id: props.filmInfo.id,
-      rating: props.filmInfo.ratingKoda.toFixed(1),
-      ratingColor,
-    };
+  filmType: {
+    type: String,
+    required: true,
   },
-};
+});
+
+const useColorRating = (rating) => computed(() => {
+  if (rating > 7.0) {
+    return '#3bb33b';
+  } else if (rating < 6.0) {
+    return '#ff0000';
+  } else {
+    return '#777777';
+  }
+});
+
+const imageSrc = ref('');
+const isLoaded = ref(false);
+
+onMounted(() => {
+  const imageUrl = props.film.posterLink;
+  const img = new Image();
+  img.src = imageUrl;
+  img.onload = () => {
+    imageSrc.value = imageUrl;
+    isLoaded.value = true;
+  };
+});
+
+const ratingColor = useColorRating(props.film.ratingKoda);
+const rating = computed(() => props.film.ratingKoda);
+const title = computed(() => props.film.title);
+const id = computed(() => props.film.id);
+
 </script>
 
 <template>
-  <div class="loader-container">
-    <div v-if="loading" class="loader"></div>
-    <div class="image-container" v-else>
-        <button class="series-item" type="button" @click="$router.push('/film/' + id)">
-          <img :src="imageSrc" :alt="title" class="img-news">
-        </button>
+  <div class="loader__container">
+    <div v-if="!isLoaded" class="loader"></div>
+    <div class="image__container" v-else>
+      <button class="series__item" type="button" @click="$router.push(`/${filmType}/${id}`)">
+        <img :src="imageSrc" :alt="title" class="img__news">
+      </button>
       <div class="buttons">
         <button class="like" type="button">
           <svg xmlns="http://www.w3.org/2000/svg" id="Filled" viewBox="0 0 24 24" width="17" height="17">
@@ -77,23 +68,24 @@ export default {
 </template>
 
 <style scoped>
-.loader-container {
+.loader__container {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 270px;
+  height: 390px;
 }
 
-.image-container {
-  width: 100%;
-  height: 100%;
+.image__container {
+  width: 270px;
+  height: 390px;
   transition: all 0.3s ease;
 }
 
-.img-news {
+.img__news {
   width: 100%;
   height: 100%;
   border-radius: 10px;
   object-fit: cover;
+  transition: all 0.3s ease;
 }
 
 
@@ -135,8 +127,8 @@ button {
 .loader {
   position: absolute;
   border-radius: 10px;
-  width: 100%;
-  height: 394px;
+  width: 270px;
+  height: 390px;
   background: linear-gradient(90deg, #ccc 25%, #ddd 50%, #ccc 75%);
   background-size: 200% 100%;
   animation: loading 4s infinite;
@@ -150,6 +142,7 @@ button {
   width: 43px;
   height: 35px;
   border-radius: 10px;
+  text-align: center;
 }
 
 .title{
@@ -159,23 +152,25 @@ button {
   width: 100%;
   margin-top: 5px;
   text-align: left;
+  margin-left: 5px;
+  transition: all 0.3s ease;
 }
 
-.image-container:hover .title{
+.image__container:hover .title{
   color: var(--color-kodalib);
   transition: all 0.3s ease;
 }
 
-.image-container:hover .img-news{
+.image__container:hover .img__news{
   opacity: 0.5;
   transition: all 0.3s ease;
 }
 
-.series-item{
+.series__item{
   border: none;
   background: none;
   width: 100%;
-  height: 394px;
+  height: 100%;
 }
 
 @keyframes loading {

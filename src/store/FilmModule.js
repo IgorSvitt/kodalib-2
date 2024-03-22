@@ -86,6 +86,9 @@ export const film = {
     mutations: {
         setFilm(state, film) {
             state.info = film
+        },
+        setFilmList(state, films) {
+            state.films = films
         }
     },
 
@@ -100,6 +103,30 @@ export const film = {
                 await router.push({path: "/404"})
             }
 
+        },
+
+        async getNewFilms({commit}) {
+            try{
+                await axios.get(API_PATH + "/films/new")
+                    .then(response => {
+                        commit('setFilmList', response.data)
+                    })
+
+            } catch (e) {
+                commit('setFilmList', [])
+            }
+        },
+
+        async getFilms({commit}) {
+            try{
+                await axios.get(API_PATH + "/films")
+                    .then(response => {
+                        commit('setFilmList', response.data)
+                    })
+
+            } catch (e) {
+                commit('setFilmList', [])
+            }
         }
     },
 }

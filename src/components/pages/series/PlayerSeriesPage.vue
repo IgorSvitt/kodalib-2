@@ -1,6 +1,7 @@
 <script setup>
-import {ref} from "vue";
+import {onMounted, ref, watch} from "vue";
 import SeasonsPlayerSeriesPage from "@/components/pages/series/SeasonsPlayerSeriesPage.vue";
+import {useStore} from "vuex";
 
 const props = defineProps({
   voiceover: {
@@ -8,17 +9,28 @@ const props = defineProps({
     required: true
   }
 })
+
 const activeVoiceover = ref(0)
+const activeEpisode = ref(props.voiceover[activeVoiceover.value].seasons[0].episodes[0].linkToWatch)
+const store = useStore()
+
+watch(() => store.state.series.episode, (newEpisode) => {
+  activeEpisode.value = newEpisode;
+  console.log(newEpisode)
+})
+
 
 const handleChangeVoiceover = (index) => {
   activeVoiceover.value = index;
 };
+
+
 </script>
 
 <template>
   <div class="player-container">
     <div class="player">
-      <iframe :src="voiceover[activeVoiceover].seasons[0].episodes[0].linkToWatch" width="610" height="370"
+      <iframe :src="activeEpisode" width="610" height="370"
               allowfullscreen allow="autoplay *; fullscreen *"></iframe>
     </div>
     <div class="voiceover">
